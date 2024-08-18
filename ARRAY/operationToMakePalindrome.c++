@@ -26,6 +26,34 @@ int operation=0;
 	}
 	return operation;
     }
+
+
+    #include <vector>
+#include <algorithm>  // For std::max and std::min
+// not submitted
+int palindrome(std::vector<int>& A) {
+    int n = A.size();
+    int i = 0;
+    int j = n - 1;
+    int operations = 0;
+
+    while (i < j) {
+        if (A[i] == A[j]) {
+            i++;
+            j--;
+        } else if (A[i] < A[j]) {
+            A[i + 1] += A[i];
+            i++;
+            operations++;
+        } else {
+            A[j - 1] += A[j];
+            j--;
+            operations++;
+        }
+    }
+    return operations;
+}
+
 //      4 3 7 1
 //      4 3 8 
 // 7 8 
